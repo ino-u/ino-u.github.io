@@ -366,7 +366,8 @@
       var flies = Array.prototype.slice.call(document.querySelectorAll(".fly"));
       if (!reduce && flies.length) {
         var homes = flies.map(function (f) {
-          return { x: f.offsetLeft + 8, y: f.offsetTop + 8 };
+          var m = /left:([\d.]+)%;top:([\d.]+)%/.exec(f.getAttribute("style") || "");
+          return m ? { px: parseFloat(m[1]) / 100, py: parseFloat(m[2]) / 100 } : { px: 0, py: 0 };
         });
         var idleTimer = null, lastMove = 0;
         function reset() {
@@ -377,7 +378,7 @@
           if (now - lastMove < 120) return;
           lastMove = now;
           flies.forEach(function (f, idx) {
-            var hx = homes[idx].x, hy = homes[idx].y;
+            var hx = homes[idx].px * window.innerWidth + 8, hy = homes[idx].py * window.innerHeight + 8;
             var dx = ev.clientX - hx, dy = ev.clientY - hy;
             var dist = Math.sqrt(dx * dx + dy * dy);
             var range = Math.max(window.innerWidth, window.innerHeight) * 0.45;
