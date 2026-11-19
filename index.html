@@ -442,6 +442,7 @@
           if (hasOrient) return;
           tX = clampV((ev.clientX / window.innerWidth - 0.5) * 2);
           tY = clampV((ev.clientY / window.innerHeight - 0.5) * 2);
+          parWake();
         }, { passive: true });
         window.addEventListener("deviceorientation", function (ev) {
           if (ev.gamma == null || ev.beta == null) return;
@@ -449,6 +450,7 @@
           hasOrient = true;
           tX = clampV((ev.gamma - neutral.g) / 16);
           tY = clampV((ev.beta - neutral.b) / 16);
+          parWake();
         }, { passive: true });
         var askedSensor = false;
         window.addEventListener("pointerdown", function () {
@@ -458,9 +460,11 @@
             DeviceOrientationEvent.requestPermission().catch(function () {});
           }
         }, { passive: true });
-        (function parLoop() {
+        var parRunning = false;
+        function parStep() {
           cX += (tX - cX) * 0.055;
           cY += (tY - cY) * 0.055;
+          if (Math.abs(tX - cX) < 0.001 && Math.abs(tY - cY) < 0.001) { cX = tX; cY = tY; }
           rootEl.style.setProperty("--bgx", (-cX * 9).toFixed(2) + "px");
           rootEl.style.setProperty("--bgy", (-cY * 7).toFixed(2) + "px");
           rootEl.style.setProperty("--mx", (cX * 4).toFixed(2) + "px");
@@ -468,8 +472,16 @@
           parX = cX * 13; parY = cY * 10;
           var key = parX.toFixed(1) + "," + parY.toFixed(1);
           if (key !== lastPar) { lastPar = key; applyFlies(); }
-          requestAnimationFrame(parLoop);
-        })();
+          if (cX !== tX || cY !== tY) {
+            requestAnimationFrame(parStep);
+          } else {
+            parRunning = false;
+          }
+        }
+        function parWake() {
+          if (!parRunning) { parRunning = true; requestAnimationFrame(parStep); }
+        }
+        parWake();
       }
 
       // ダブルタップでコノハズクが飛んできて、少し羽ばたいてから飛び去る
