@@ -140,9 +140,6 @@
     }
 
     /* 中身は精査中のため、タイトル以外を一時的に非表示 */
-    .box > :not(h2) {
-      display: none;
-    }
 
     .box h2 {
       margin-bottom: 0;
@@ -320,66 +317,31 @@
 
     <section class="box" id="skills">
       <h2>Skills</h2>
-      <div class="group">
-        <h3>Web</h3>
-        <div class="chips">
-          <span class="chip">HTML</span>
-          <span class="chip">CSS</span>
-          <span class="chip">WordPress</span>
-        </div>
-      </div>
-      <div class="group">
-        <h3>Cloud / AI</h3>
-        <div class="chips">
-          <span class="chip">Cloudflare Pages</span>
-          <span class="chip">Workers</span>
-          <span class="chip">生成AI</span>
-        </div>
-      </div>
-      <div class="group">
-        <h3>Infra</h3>
-        <div class="chips">
-          <span class="chip">ネットワーク</span>
-          <span class="chip">サーバー運用</span>
-        </div>
-      </div>
-      <div class="group">
-        <h3>Business</h3>
-        <div class="chips">
-          <span class="chip">LINE公式（友だち2,500人以上）</span>
-          <span class="chip">予約システム運用</span>
-          <span class="chip">英語</span>
-        </div>
-      </div>
-      <div class="group">
-        <h3>Certifications</h3>
-        <ul class="list">
-          <li>◆ CCNA</li>
-          <li>◆ TOEIC 880</li>
-          <li>◆ 奄美大島地域通訳案内士（英語）</li>
-        </ul>
-      </div>
+      <p>どのOSでも抵抗なく使えます。Webは手打ちHTMLからWordPress、そして今はVibe Codingまで。分野をまたいで対応します。</p>
+      <ul class="list">
+        <li>GanetiとDRBDを活用した仮想サーバーサービスの運用</li>
+        <li>通信事業者のネットワーク運用（MVNOからMNOへの切り替えも経験）</li>
+        <li>WordPress（Snow Monkeyテーマ）を活用したWebサイト構築＆運用</li>
+        <li>LINE公式アカウントを活用した予約受付の運用</li>
+        <li>複数OTAの管理と予約処理</li>
+        <li>AIエージェントと連携した、Cloudflare Workers / Pagesでのサイト・ツール構築（Vibe Coding）</li>
+        <li>Claudeを活用した業務用Skillsの自作と導入</li>
+        <li>英語でのツアーガイド（奄美群島認定エコツアーガイド・奄美群島地域通訳案内士・TOEIC 880）</li>
+      </ul>
     </section>
 
     <section class="box" id="works">
       <h2>Works</h2>
       <ul class="list">
-        <li><span class="name">サイト内AIチャット</span>（Workers AI）</li>
-        <li><span class="name">奄美ガイド向けFAQボット</span></li>
-        <li><span class="name">「今日の奄美」の自動更新ページ</span></li>
-        <li><span class="name">Turnstile付き問い合わせフォーム</span></li>
+        <li><a href="https://nitetour.jp/" target="_blank" rel="noopener">元祖ナイトツアー<span class="ext">↗</span></a></li>
+        <li><a href="https://doren-camp.com/" target="_blank" rel="noopener">ドレンパキャンプ<span class="ext">↗</span></a></li>
+        <li><a href="https://amaminature.com/" target="_blank" rel="noopener">ネイチャーコム合同会社<span class="ext">↗</span></a></li>
+        <li><a href="https://page.line.me/376skjlb" target="_blank" rel="noopener">LINE公式アカウント<span class="ext">↗</span></a></li>
+        <li><a href="https://amami-guide.ai-web-lab.workers.dev/" target="_blank" rel="noopener">ひとめで奄美体験<span class="ext">↗</span></a></li>
       </ul>
     </section>
 
-    <section class="box" id="links">
-      <h2>Links</h2>
-      <ul class="list">
-        <li><a href="https://nitetour.jp/" target="_blank" rel="noopener">元祖ナイトツアー（WordPress）<span class="ext">↗</span></a></li>
-        <li><a href="https://doren-camp.com/" target="_blank" rel="noopener">ドレンパキャンプ（WordPress）<span class="ext">↗</span></a></li>
-        <li><a href="https://page.line.me/376skjlb" target="_blank" rel="noopener">LINE公式アカウント<span class="ext">↗</span></a></li>
-        <li><a href="https://github.com/ino-u" target="_blank" rel="noopener">GitHub<span class="ext">↗</span></a></li>
-      </ul>
-    </section>
+    
   </main>
 
   <script>
@@ -403,7 +365,7 @@
       }
 
       // About のタイピング表示（タップで全文）
-      var full = "InoU です。奄美大島でナイトツアーの運営とガイドをしています。元は通信会社でインフラ運用をしていて、いまはCloudflareとAIを使って、島のビジネスに役立つ道具を作っています。";
+      var full = "イノウエ ユウスケです。奄美大島で会社を運営しています。ナイトツアーの専門店とアウトドア宿泊施設をやっていて、ガイドもしています。元は通信会社でインフラ運用をしていて、自然とパソコンの両方をフィールドに活動しています。";
       var el = document.getElementById("about-text");
       var caret = document.getElementById("caret");
       var aboutBox = document.getElementById("about");
